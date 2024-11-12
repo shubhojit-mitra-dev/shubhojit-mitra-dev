@@ -1,10 +1,9 @@
-![logo](https://github.com/Shubhojit-Mitra/Shubhojit-Mitra/blob/main/Navy%20Blue%20Geometric%20Technology%20LinkedIn%20Banner%20(1).png?raw=true)
 <h1 align="center">Hi 👋, I'm Shubhojit Mitra</h1>
 <h3 align="center">NextJS Developer | Web3 and AI Enthusiast</h3>
 <br>
-<img align="right" alt="coding" width="330" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDdrdGEwYjVsMDQzNjIzdWloYjMzaWZ5d3BlZXgyanQ1bmV2eDRpYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/u2pmTWUi0MXjyrMaVj/giphy.gif">
+<img align="right" alt="coding" width="270" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDdrdGEwYjVsMDQzNjIzdWloYjMzaWZ5d3BlZXgyanQ1bmV2eDRpYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/u2pmTWUi0MXjyrMaVj/giphy.gif">
 
-# 💫 About Me:
+## 💫 About Me:
 🔭 I'm currently pursuing my BTech in CSE Specialization in Full Stack Development<br>👯 I'm a collaborative person who is always looking to make new connections<br>🤝 Connect with me on GitHub and LinkedIn<br>🌱 I’m currently learning about MERN Stack Development and Full Stack NextJS<br>💬 Ask me about Frontend development & Python Advanced<br>⚡ Fun fact: I can't code without coffee ...! I believe no developer can! 😆
 
 
