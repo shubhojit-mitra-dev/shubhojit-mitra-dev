@@ -1,5 +1,5 @@
 <h1 align="center">Hi 👋, I'm Shubhojit Mitra</h1>
-<h3 align="center">NextJS Developer | Web3 and AI Enthusiast</h3>
+<h3 align="center">NextJS Developer | TypeScript | Web3 and AI Enthusiast</h3>
 <br>
 <img align="right" alt="coding" width="270" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDdrdGEwYjVsMDQzNjIzdWloYjMzaWZ5d3BlZXgyanQ1bmV2eDRpYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/u2pmTWUi0MXjyrMaVj/giphy.gif">
 
