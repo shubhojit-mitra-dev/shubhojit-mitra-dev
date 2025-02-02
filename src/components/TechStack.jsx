@@ -10,12 +10,12 @@ import nodeIcon from '../assets/node.svg';
 import twIcon from '../assets/tailwind.svg';
 import gitIcon from '../assets/git.svg';
 import tsIcon from '../assets/typescript.svg';
-import mysqlIcon from '../assets/mysql.svg';
+import mongoIcon from '../assets/mongodb.svg';
 import nextIcon from '../assets/nextjs.svg';
 import figmaIcon from '../assets/figma.svg';
 import ghIcon from '../assets/github.svg';
 import shadcnIcon from '../assets/shadcn.svg';
-import vscIcon from '../assets/vscode.svg';
+import postmanIcon from '../assets/postman.svg';
 import CustomButton from './ui/CustomButton';
 
 const TechStack = () => {
@@ -46,9 +46,9 @@ const TechStack = () => {
           <TranslucentTab content="Git" icon={gitIcon} link="https://git-scm.com/" size="px-10 py-5 border col-span-1" />
           <TranslucentTab content="GitHub" icon={ghIcon} link="https://www.github.com/" size="px-10 py-5 border col-span-1" />
           <TranslucentTab content="Node.js" icon={nodeIcon} link="https://nodejs.org/" size="px-10 py-5 border col-span-1" />
-          <TranslucentTab content="VS Code" icon={vscIcon} link="https://code.visualstudio.com/" size="px-10 py-5 border col-span-1" />
+          <TranslucentTab content="Postman" icon={postmanIcon} link="https://www.postman.com/" size="px-10 py-5 border col-span-1" />
           <TranslucentTab content="Figma" icon={figmaIcon} link="https://www.figma.com/" size="px-10 py-5 border col-span-1" />
-          <TranslucentTab content="MySQL" icon={mysqlIcon} link="https://www.mysql.com/" size="px-10 py-5 border col-span-1" />
+          <TranslucentTab content="MongoDB" icon={mongoIcon} link="https://www.mongodb.com/" size="px-10 py-5 border col-span-1" />
           <TranslucentTab content="C++" icon={cppIcon} link="https://isocpp.org/" size="px-10 py-5 border col-span-1" />
         </div>
         <div className='flex justify-center mt-7 cursor-pointer' onClick={(e) => handleScroll('projects', e)}>

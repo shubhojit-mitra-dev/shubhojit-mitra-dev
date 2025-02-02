@@ -7,9 +7,9 @@ const CustomButton = ({ content, icon, variant, link, size, onClick }) => {
     : 'bg-white text-blue-500 hover:bg-gray-300';
 
   const sizeClasses = {
-    xl: 'px-8 py-4 text-lg sm:px-6 sm:py-3 sm:text-base',
-    l: 'px-6 py-3 text-base sm:px-4 sm:py-2 sm:text-sm',
-    m: 'px-4 py-2 text-sm sm:px-3 sm:py-1 sm:text-xs',
+    xl: 'px-8 py-4 text-lg sm:px-6 sm:py-3 sm:text-base font-bold',
+    l: 'px-6 py-3 text-base sm:px-4 sm:py-2 sm:text-sm font-bold',
+    m: 'px-4 py-2 text-sm sm:px-3 sm:py-1 sm:text-xs font-bold',
   };
 
   const iconSizeClasses = {
