@@ -10,10 +10,29 @@ function App() {
     const [showDialog, setShowDialog] = useState(false);
     const [currentDirectory, setCurrentDirectory] = useState('shubhojit-mitra-dev');
     const [step, setStep] = useState('cd');
+    const [showArrowTooltip, setShowArrowTooltip] = useState(false);
     const terminalRef = useRef(null);
     const inputRef = useRef(null);
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const hasVisited = localStorage.getItem('hasVisited');
+        if (!hasVisited) {
+            setShowDialog(true);
+            localStorage.setItem('hasVisited', 'true');
+        }
+    }, []);
+
+    useEffect(() => {
+        const hasSeenTooltip = localStorage.getItem('hasSeenTooltip');
+        if (!hasSeenTooltip) {
+            const timer = setTimeout(() => {
+                setShowArrowTooltip(true);
+            }, 500);
+            return () => clearTimeout(timer);
+        }
+    }, []);
 
     useEffect(() => {
         if (window.innerWidth < 768) {
@@ -43,15 +62,23 @@ function App() {
             'pnpm run dev', 'pnpm dev'
         ];
 
-        if (command === 'clear') {
+        if (command.trim() === 'clear') {
             setCommands([]);
             return;
         }
 
         setCommands(prev => [...prev, { text: command }]);
 
+        if (command.trim() === 'ls') {
+            setCommands(prev => [...prev,
+                { text: '📁 portfolio', isFolder: true }
+            ]);
+            setLoading(false);
+            return;
+        }
+
         // Step 1: cd portfolio
-        if (command === 'cd portfolio') {
+        if (command.trim() === 'cd portfolio') {
             if (step !== 'cd') {
                 setCommands(prev => [...prev, { text: 'Please follow the correct sequence:', isError: true }]);
                 setCommands(prev => [...prev, { text: '1. cd portfolio', isError: true }]);
@@ -84,9 +111,9 @@ function App() {
                 "Resolving dependencies...",
                 "Fetching packages...",
                 "Installing dependencies...",
-                "> vite@5.4.10",
-                "> react@18.3.1",
-                "> tailwindcss@3.7.1",
+                "       > vite@5.4.10",
+                "       > react@18.3.1",
+                "       > tailwindcss@3.7.1",
                 "Added 250 packages in 3.2s",
                 `Done! Now run '${pm} run dev' to start the development server`
             ];
@@ -122,13 +149,13 @@ function App() {
             await new Promise(resolve => setTimeout(resolve, 500));
 
             const startupMessages = [
-                `VITE v5.4.10  ready in 518 ms`,
+                `   VITE v5.4.10  ready in 518 ms`,
                 '',
-                '  ➜  Local:   https://shubhojit-mitra-dev/portfolio',
-                '  ➜  Network: use --host to expose',
-                '  ➜  press h + enter to show help',
+                '       ➜  Local:   https://shubhojit-mitra-dev.vercel.app/portfolio',
+                '       ➜  Network: use --host to expose',
+                '       ➜  press h + enter to show help',
                 '',
-                'redirecting to /portfolio in 5 seconds...'
+                '   redirecting to /portfolio in 5 seconds...'
             ];
 
             for (const msg of startupMessages) {
@@ -147,6 +174,17 @@ function App() {
             handleCommand(currentInput);
             setCurrentInput('');
         }
+    };
+
+    const handleInfoClick = () => {
+        setShowDialog(true);
+        setShowArrowTooltip(false); // Hide tooltip when info button is clicked
+    };
+
+    const handleDialogClose = () => {
+        setShowDialog(false);
+        localStorage.setItem('hasSeenTooltip', 'true');
+        setShowArrowTooltip(false);
     };
 
     useEffect(() => {
@@ -168,10 +206,15 @@ function App() {
                     </div>
                     <div className="text-white/70 text-sm">Terminal</div>
                     <button
-                        onClick={() => setShowDialog(true)}
-                        className="text-white/70 hover:text-white"
+                        onClick={handleInfoClick}
+                        className="relative text-white/70 hover:text-white"
                     >
                         <Info size={18} />
+                        {showArrowTooltip && (
+                            <div className="absolute right-full mr-2 whitespace-nowrap bg-blue-500 text-white px-3 py-1 rounded-lg text-sm animate-bounce-horizontal">
+                                Need help? Click here! →
+                            </div>
+                        )}
                     </button>
                 </div>
 
@@ -231,7 +274,7 @@ function App() {
                             - <code className="bg-gray-100 px-2 py-1 rounded">pnpm run dev</code> or <code className="bg-gray-100 px-2 py-1 rounded">pnpm dev</code>
                         </p>
                         <button
-                            onClick={() => setShowDialog(false)}
+                            onClick={handleDialogClose}
                             className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
                         >
                             Close
