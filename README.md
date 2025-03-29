@@ -3,7 +3,12 @@
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=shubhojit-mitra-dev&label=Profile%20views&color=0e75b6&style=flat" alt="bluebox4112005" /> </p>
 
 ## 💫 About Me:
-🔭 I'm currently pursuing my BTech in CSE Specialization in Full Stack Development<br>👯 I'm a collaborative person who is always looking to make new connections<br>🤝 Connect with me on GitHub and LinkedIn<br>🌱 I’m currently learning about MERN Stack Development and Full Stack NextJS<br>💬 Ask me about Frontend development & Python Advanced<br>⚡ Fun fact: I can't code without coffee ...! I believe no developer can! 😆
+🔭 I'm currently pursuing my BTech in CSE Specialization in Full Stack AI<br>
+👯 I'm a collaborative person who is always looking to make new connections<br>
+🤝 Connect with me on GitHub and LinkedIn<br>
+🌱 I’m currently working with Full Stack NextJS and React Native mobile app development<br>
+💬 Ask me about development and tech in general. I'm also a music enthusiast 🎸<br>
+⚡ Fun fact: I can't code without coffee ...! I believe no developer can! 😆
 
 ## 🌐 Socials:
 [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/m.shubhojit_2005) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/https://www.linkedin.com/in/shubhojit-mitra-dev)
@@ -26,13 +31,9 @@
 ![](https://github-readme-streak-stats.herokuapp.com/?user=shubhojit-mitra-dev&theme=blue-green&hide_border=false)<br/>
 
 
-## 🏆 GitHub Trophies
-![](https://github-profile-trophy.vercel.app/?username=shubhojit-mitra-dev&theme=dark_dimmed&no-frame=false&no-bg=true&margin-w=4)
-
 ### ✍️ Random Dev Quote
 ![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical)
 
 ---
-[![](https://visitcount.itsvg.in/api?id=shubhojit-mitra-dev&icon=0&color=0)](https://visitcount.itsvg.in)
 
 <!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
