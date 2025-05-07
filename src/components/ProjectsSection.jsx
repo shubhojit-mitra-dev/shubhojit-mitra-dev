@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import contentBuilder from '../assets/content-builder.png';
 import ghIcon from '../assets/github.svg';
+import listify from '../assets/listify.png';
 import mentorHub from '../assets/mentorHub.png';
 import open from '../assets/open-link.svg';
+import restaura from '../assets/restaura.png';
 import thundermailPythonSDK from '../assets/thundermail-python-sdk.png';
+import webIcon from '../assets/web.svg';
 import workInProgress from '../assets/work-in-progress.png';
 import zeniski from '../assets/zeniski.png';
-import webIcon from '../assets/web.svg';
-import contentBuilder from '../assets/content-builder.png';
-import restaura from '../assets/restaura.png';
-import listify from '../assets/listify.png';
+import pixinary from '../assets/pixinary.png';
+import devcodejourney from '../assets/devcodejourney.png';
 
 const ProjectsSection = () => {
     const [tooltip, setTooltip] = useState({
@@ -19,6 +21,22 @@ const ProjectsSection = () => {
     });
 
     const projects = [
+        {
+            name: 'Pixinary',
+            image: pixinary,
+            github: 'https://github.com/shubhojit-mitra-dev/pixinary',
+            link: 'https://pixinary.vercel.app/',
+            description:
+                'Pixinary is an image gallery that allows user to upload images on cloudinary, add any images to favorites, and edit images by turning them to grayscale, pixilate, blur or remove background. It is built using Next.js, TypeScript, Tailwind CSS, and Cloudinary file storage.',
+        },
+        {
+            name: 'DevCodeJourney',
+            image: devcodejourney,
+            github: 'https://github.com/shubhojit-mitra-dev/blog-app/',
+            link: 'https://dev-code-journey.vercel.app/',
+            description:
+                'My blogging platform built with Next.js, TypeScript, and Tailwind CSS. It features a user-friendly interface for creating, editing, and deleting blog posts, along with a robust backend powered by Node.js and Express.',
+        },
         {
             name: 'Content Builder for Social Media',
             image: contentBuilder,
