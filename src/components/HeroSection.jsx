@@ -12,7 +12,7 @@ const HeroSection = () => {
     const HEADER = "Heyy 👋, I'm Shubhojit Mitra";
     const CONTENT = 'A full-stack developer who is motivated in JavaScript, React, Next.js, and TailwindCSS. Experience with responsive web application development, integration of AI, and database management using MongoDB. Applying my skills in Modern front-end development and UI/UX design to create innovative projects.';
 
-    const resumeLink = 'https://docs.google.com/document/d/1SOaNhpkwkOVLOAl30ttRGaeoDw8_L-X2cM7NiKiqx8E/edit?usp=sharing';
+    const resumeLink = 'https://drive.google.com/file/d/1SAaThb8fW_ZUrY9cg9GZyH0-G7OE5PlV/view?usp=sharing';
 
     const handleScroll = (id) => {
         const element = document.getElementById(id);
