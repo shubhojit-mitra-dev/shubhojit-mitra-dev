@@ -5,13 +5,12 @@
     </td>
     <td style="min-width:220px; width: 100%; vertical-align: top;">
 
-      <h2>👋 About Me</h2>
-      <p>
-        Hi, I'm <b>Shubhojit</b>, a Full Stack Developer with a passion for building scalable systems and applications.<br><br>
-        I specialize in <b>Next.js</b>, <b>React Native</b>, <b>TypeScript</b>, and <b>PostgreSQL</b>, with <b>DevOps</b> practices and <b>System Architecture</b> knowledge including <b>AWS</b>, <b>Docker</b>, <b>CI/CD pipelines</b>, <b>Kubernetes</b>, <b>Linux</b>, <b>TDD</b>, <b>System Design</b> and <b>Design Patterns</b>
-      </p>
-    </td>
-  </tr>
+## 👋 About Me
+Hi, I'm **Shubhojit**, a Full Stack Developer with a passion for building scalable systems and applications.
+I specialize in **Next.js**, **React Native**, **TypeScript**, and **PostgreSQL**, with **DevOps** practices and **System Architecture** knowledge including **AWS**, **Docker**, **CI/CD pipelines**, **Kubernetes**, **Linux**, **TDD**, **System Design** and **Design Patterns**
+
+</td>
+</tr>
 </table>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=shubhojit-mitra-dev&label=Profile%20views&color=0e75b6&style=flat" alt="bluebox4112005" /> </p>
