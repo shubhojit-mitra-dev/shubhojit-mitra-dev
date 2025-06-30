@@ -10,8 +10,7 @@
 
 Hi, I'm **Shubhojit**, a Full Stack Developer with a passion for building scalable systems and applications.
 
-I specialize in **Next.js**, **React Native**, **TypeScript**, and **PostgreSQL**, with **DevOps** practices and **System Architecture** knowledge including **AWS**, **Docker**, **CI/CD pipelines**, **Kubernetes**, **Linux**, **TDD**, **System Design** and **Design Patterns**
-
+I specialize in **Next.js**, **React Native**, **TypeScript**, and **PostgreSQL**, with **DevOps** practices and **System Architecture** knowledge including **AWS**, **Docker**, **CI/CD pipelines**, **Kubernetes**, **Linux**, **TDD**, **System Design** and **Design Patterns** 
     </td>
   </tr>
 </table>
