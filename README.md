@@ -1,4 +1,4 @@
-![Black Yellow Modern Programmer LinkedIn Banner](https://github.com/user-attachments/assets/ffeaa0e3-cb18-4624-bc98-179e28582145)
+![Banner video](./src/assets/banner_smaller.gif)
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=shubhojit-mitra-dev&label=Profile%20views&color=0e75b6&style=flat" alt="bluebox4112005" /> </p>
 
