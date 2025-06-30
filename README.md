@@ -1,6 +1,4 @@
-<div align="center">
-  <img src="./src/assets/banner_smaller.gif" alt="Banner video" style="width: 100%; max-width: 100%; height: auto;" />
-</div>
+![Banner video](./src/assets/banner_wide.gif)
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=shubhojit-mitra-dev&label=Profile%20views&color=0e75b6&style=flat" alt="bluebox4112005" /> </p>
 
