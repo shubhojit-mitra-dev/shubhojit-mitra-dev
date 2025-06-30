@@ -1,16 +1,18 @@
 <table>
   <tr>
-    <td style="min-width:180px; width: 100%; vertical-align: top;">
+    <td width="50%" style="min-width:180px; vertical-align: top;">
       <img src="./src/assets/banner_smaller.gif" alt="Banner video" style="width:100%; max-width:100%; height:auto;" />
     </td>
-    <td style="min-width:220px; width: 100%; vertical-align: top;">
+    <td width="50%" style="min-width:220px; vertical-align: top;">
 
-## 👋 About Me
-Hi, I'm **Shubhojit**, a Full Stack Developer with a passion for building scalable systems and applications.
-I specialize in **Next.js**, **React Native**, **TypeScript**, and **PostgreSQL**, with **DevOps** practices and **System Architecture** knowledge including **AWS**, **Docker**, **CI/CD pipelines**, **Kubernetes**, **Linux**, **TDD**, **System Design** and **Design Patterns**
+      <h2>👋 About Me</h2>
 
-</td>
-</tr>
+      Hi, I'm <b>Shubhojit</b>, a Full Stack Developer with a passion for building scalable systems and applications.
+
+      I specialize in <b>Next.js</b>, <b>React Native</b>, <b>TypeScript</b>, and <b>PostgreSQL</b>, with <b>DevOps</b> practices and <b>System Architecture</b> knowledge including <b>AWS</b>, <b>Docker</b>, <b>CI/CD pipelines</b>, <b>Kubernetes</b>, <b>Linux</b>, <b>TDD</b>, <b>System Design</b> and <b>Design Patterns</b>
+
+    </td>
+  </tr>
 </table>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=shubhojit-mitra-dev&label=Profile%20views&color=0e75b6&style=flat" alt="bluebox4112005" /> </p>
