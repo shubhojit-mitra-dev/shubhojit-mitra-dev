@@ -1,15 +1,16 @@
 <table>
   <tr>
     <td width="50%" style="min-width:180px; vertical-align: top;">
+      <!-- Ensure this path is correct relative to your repo root -->
       <img src="./src/assets/banner_smaller.gif" alt="Banner video" style="width:100%; max-width:100%; height:auto;" />
     </td>
     <td width="50%" style="min-width:220px; vertical-align: top;">
 
-      <h2>👋 About Me</h2>
+**👋 About Me**
 
-      Hi, I'm <b>Shubhojit</b>, a Full Stack Developer with a passion for building scalable systems and applications.
+Hi, I'm **Shubhojit**, a Full Stack Developer with a passion for building scalable systems and applications.
 
-      I specialize in <b>Next.js</b>, <b>React Native</b>, <b>TypeScript</b>, and <b>PostgreSQL</b>, with <b>DevOps</b> practices and <b>System Architecture</b> knowledge including <b>AWS</b>, <b>Docker</b>, <b>CI/CD pipelines</b>, <b>Kubernetes</b>, <b>Linux</b>, <b>TDD</b>, <b>System Design</b> and <b>Design Patterns</b>
+I specialize in **Next.js**, **React Native**, **TypeScript**, and **PostgreSQL**, with **DevOps** practices and **System Architecture** knowledge including **AWS**, **Docker**, **CI/CD pipelines**, **Kubernetes**, **Linux**, **TDD**, **System Design** and **Design Patterns**
 
     </td>
   </tr>
