@@ -1,16 +1,18 @@
-![Banner video](./src/assets/banner_wide.gif)
+<table>
+<tr>
+<td width="50%">
+<img src="./src/assets/banner_smaller.gif" alt="Banner video" width="100%" />
+</td>
+<td width="50%" valign="top">
+
+## 👋 About Me
+Hi, I'm **Shubhojit**, a Full Stack Developer with a passion for building scalable systems and applications.
+I specialize in **Next.js**, **React Native**, **TypeScript**, and **PostgreSQL**, with **DevOps** practices and **System Architecture** knowledge including **AWS**, **Docker**, **CI/CD pipelines**, **Kubernetes**, **Linux**, **TDD**, **System Design** and **Design Patterns**
+</td>
+</tr>
+</table>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=shubhojit-mitra-dev&label=Profile%20views&color=0e75b6&style=flat" alt="bluebox4112005" /> </p>
-
-## 💫 About Me:
-<div font="mono">
-  🔭 I'm currently pursuing my BTech in CSE Specialization in Full Stack AI<br>
-  👯 I'm a collaborative person who is always looking to make new connections<br>
-  🤝 Connect with me on GitHub and LinkedIn<br>
-  🌱 I’m currently working with Full Stack NextJS and React Native mobile app development<br>
-  💬 Ask me about development and tech in general. I'm also a music enthusiast 🎸<br>
-  ⚡ Fun fact: I can't code without coffee ...! I believe no developer can! 😆
-</div>
 
 ## 🌐 Socials:
 [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/m.shubhojit_2005) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/https://www.linkedin.com/in/shubhojit-mitra-dev)
