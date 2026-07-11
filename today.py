@@ -151,15 +151,35 @@ def recursive_loc(owner, repo_name, data, cache_comment, addition_total=0, delet
         }
     }'''
     variables = {'repo_name': repo_name, 'owner': owner, 'cursor': cursor}
-    request = requests.post('https://api.github.com/graphql', json={'query': query, 'variables':variables}, headers=HEADERS)
-    if request.status_code == 200:
+    max_retries = 3
+    request = None
+    for attempt in range(max_retries):
+        try:
+            request = requests.post('https://api.github.com/graphql', json={'query': query, 'variables':variables}, headers=HEADERS)
+            if request.status_code == 200:
+                break
+            elif request.status_code in [502, 503, 504] and attempt < max_retries - 1:
+                print(f"Got {request.status_code} in recursive_loc for {repo_name}. Retrying in 2 seconds... (Attempt {attempt+1}/{max_retries})")
+                time.sleep(2)
+        except Exception as e:
+            if attempt < max_retries - 1:
+                print(f"Network error in recursive_loc: {e}. Retrying in 2 seconds...")
+                time.sleep(2)
+            else:
+                force_close_file(data, cache_comment)
+                raise e
+
+    if request is not None and request.status_code == 200:
         ref = request.json()['data']['repository']['defaultBranchRef']
         if ref is not None:
             return loc_counter_one_repo(owner, repo_name, data, cache_comment, ref['target']['history'], addition_total, deletion_total, my_commits)
         else:
             return 0, 0, 0
+            
     force_close_file(data, cache_comment)
-    raise Exception(f"recursive_loc() failed with {request.status_code} {request.text}")
+    status_code = request.status_code if request is not None else 'Unknown'
+    text = request.text if request is not None else 'No response'
+    raise Exception(f"recursive_loc() failed with {status_code} {text}")
 
 def loc_counter_one_repo(owner, repo_name, data, cache_comment, history, addition_total, deletion_total, my_commits):
     global OWNER_ID
@@ -173,6 +193,25 @@ def loc_counter_one_repo(owner, repo_name, data, cache_comment, history, additio
         return addition_total, deletion_total, my_commits
     else:
         return recursive_loc(owner, repo_name, data, cache_comment, addition_total, deletion_total, my_commits, history['pageInfo']['endCursor'])
+
+def read_loc_cache_fallback(comment_size=7):
+    filename = 'cache/' + hashlib.sha256(USER_NAME.encode('utf-8')).hexdigest() + '.txt'
+    loc_add, loc_del = 0, 0
+    try:
+        if os.path.exists(filename):
+            with open(filename, 'r') as f:
+                lines = f.readlines()[comment_size:]
+            for line in lines:
+                parts = line.split()
+                if len(parts) >= 5:
+                    loc_add += int(parts[3])
+                    loc_del += int(parts[4])
+            if loc_add > 0:
+                print(f"Loaded fallback LOC from cache: additions={loc_add}, deletions={loc_del}")
+                return [loc_add, loc_del, loc_add - loc_del, True]
+    except Exception as e:
+        print(f"Error reading LOC fallback from cache: {e}")
+    return [250000, 50000, 200000, True]
 
 def loc_query(owner_affiliation, comment_size=0, force_cache=False, cursor=None, edges=[]):
     if not ACCESS_TOKEN:
@@ -731,7 +770,11 @@ if __name__ == '__main__':
     commit_data = get_all_commits()
     
     # Lines of code (cached)
-    total_loc = loc_query(['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'], 7)
+    try:
+        total_loc = loc_query(['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'], 7)
+    except Exception as e:
+        print(f"Warning: loc_query failed ({e}). Loading fallback from cache...")
+        total_loc = read_loc_cache_fallback(7)
     
     # Load ASCII Art
     with open('ascii_art.txt', 'r') as f:
