@@ -1,8 +1,8 @@
 <div align="center">
   <a href="https://github.com/shubhojit-mitra-dev/shubhojit-mitra-dev">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="dark_mode.svg">
-      <img alt="Shubhojit Mitra's Profile Stats" src="light_mode.svg" width="985px">
+      <source media="(prefers-color-scheme: dark)" srcset="/shubhojit-mitra-dev/shubhojit-mitra-dev/raw/main/dark_mode.svg">
+      <img alt="Shubhojit Mitra's Profile Stats" src="/shubhojit-mitra-dev/shubhojit-mitra-dev/raw/main/light_mode.svg" width="985px">
     </picture>
   </a>
 </div>
