@@ -663,9 +663,9 @@ def check_scheduler():
     """
     state_file = 'cache/schedule_state.json'
     
-    # If workflow dispatch manual trigger, always run
-    if os.environ.get('GITHUB_EVENT_NAME') == 'workflow_dispatch':
-        print("Manual trigger detected. Forcing execution.")
+    # If workflow dispatch manual trigger or push, always run
+    if os.environ.get('GITHUB_EVENT_NAME') in ['workflow_dispatch', 'push']:
+        print("Manual trigger or push detected. Forcing execution.")
         return True
         
     try:
