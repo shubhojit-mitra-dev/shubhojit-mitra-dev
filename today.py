@@ -132,6 +132,8 @@ def recursive_loc(owner, repo_name, data, cache_comment, addition_total=0, delet
                             edges {
                                 node {
                                     author {
+                                        name
+                                        email
                                         user {
                                             id
                                         }
@@ -182,7 +184,28 @@ def recursive_loc(owner, repo_name, data, cache_comment, addition_total=0, delet
 def loc_counter_one_repo(owner, repo_name, data, cache_comment, history, addition_total, deletion_total, my_commits):
     global OWNER_ID
     for node in history['edges']:
-        if node['node']['author'] and node['node']['author']['user'] and node['node']['author']['user']['id'] == OWNER_ID:
+        author = node['node'].get('author')
+        if not author:
+            continue
+        
+        is_me = False
+        if author.get('user') and author['user'].get('id') == OWNER_ID:
+            is_me = True
+        
+        email = author.get('email', '').lower()
+        if not is_me and email:
+            if (email == 'shubhojit.120225@stu.upes.ac.in' or 
+                email == 'shubhojitmitra@outlook.com' or 
+                'shubhojit-mitra-dev' in email or 
+                'blackknight05' in email):
+                is_me = True
+                
+        name = author.get('name', '').lower()
+        if not is_me and name:
+            if name in ['shubhojit mitra', 'shubhojit-mitra-dev', 'blackknight05', 'shubhojitmitra']:
+                is_me = True
+                
+        if is_me:
             my_commits += 1
             addition_total += node['node']['additions']
             deletion_total += node['node']['deletions']
