@@ -1,3 +1,14 @@
+<div align="center">
+  <a href="https://github.com/shubhojit-mitra-dev/shubhojit-mitra-dev">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/shubhojit-mitra-dev/shubhojit-mitra-dev/main/dark_mode.svg">
+      <img alt="Shubhojit Mitra's Profile Stats" src="https://raw.githubusercontent.com/shubhojit-mitra-dev/shubhojit-mitra-dev/main/light_mode.svg" width="985px">
+    </picture>
+  </a>
+</div>
+
+<br/>
+
 <img width="1584" height="396" alt="Black Yellow Modern Programmer LinkedIn Banner (8)" src="https://github.com/user-attachments/assets/be547830-392f-4b86-8174-4cd9254ac7fa" />
 
 

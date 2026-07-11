@@ -1,0 +1,87 @@
+# Neofetch README SVG Configuration
+
+profile:
+  username: "shubhojit-mitra-dev"
+  birthday: "2005-11-10" # Used for calculating Uptime / Age
+  
+theme:
+  font_family: "ui-monospace, 'DejaVu Sans Mono', 'Liberation Mono', Consolas, monospace"
+  right_align_x: 450
+  ascii_font_size: "10.5px"
+  right_font_size: "13px"
+  width: "985px"
+  height: "650px"
+  
+  # Dark mode colors
+  dark:
+    bg: "#161b22"
+    text: "#c9d1d9"
+    key: "#ffa657"     # Orange-accented keys
+    value: "#a5d6ff"   # Blue-accented values
+    dots: "#616e7f"    # Gray separator dots
+    add: "#3fb950"     # Green additions
+    delete: "#f85149"  # Red deletions
+    ascii: "#c9d1d9"   # White/gray ASCII art color
+    
+  # Light mode colors
+  light:
+    bg: "#f6f8fa"
+    text: "#24292f"
+    key: "#953800"
+    value: "#0a3069"
+    dots: "#c2cfde"
+    add: "#1a7f37"
+    delete: "#cf222e"
+    ascii: "#24292f"
+
+# The layout and data displayed in the right column of the SVG card
+# Note: Key-value lines are formatted as: ". Key: ...... Value"
+# Dots are automatically calculated to pad/justify the text.
+layout:
+  header: "shubhojitmitra@dev"
+  
+  system:
+    - key: "OS"
+      value: "Linux (I use Arch btw!)"
+    - key: "Uptime"
+      value: "[UPTIME]" # Special placeholder, will be replaced with dynamic age
+    - key: "Editor"
+      value: "Neovim, VS Code"
+    - key: "Role"
+      value: "Software Engineer"
+      
+  Software:
+    - key: "languages.Programming"
+      value: "C, C++, Go, Java, JS, TS, Python"
+    - key: "Frameworks.Backend"
+      value: "Node.js, FastAPI, Spring Boot"
+    # - key: "Frameworks.Frontend"
+    #   value: "Next.js, React, TailwindCSS"
+    - key: "Database"
+      value: "PostgreSQL, MongoDB, Redis, MySQL"
+    - key: "Tools.DevOps"
+      value: "AWS, Docker, Kubernetes, CI/CD, IaC"
+    - key: "Tools.Systems"
+      value: "Kafka, gRPC, Nginx, Grafana, Prometheus"
+  
+  Hobbies:
+   - key: "Hobbies.Static"
+     value: "Watching Anime, Cooking, Brainstorming"
+   - key: "Hobbies.Dynamic"
+     value: "Playing Basketball, MMA, Swimming"
+      
+  contact:
+    - key: "Email"
+      value: "mitrashubhojit2005@gmail.com"
+    # - key: "Discord"
+    #   value: "shubhojit-mitra-dev"
+    - key: "LinkedIn"
+      value: "https://linkedin.com/in/shubhojit-mitra-dev"
+    - key: "Medium"
+      value: "https://shubhojit-mitra-dev.medium.com"
+    # - key: "HackerRank"
+    #   value: "https://hackerrank.com/profile/blackknight05"
+    # - key: "LeetCode"
+    #   value: "https://leetcode.com/u/shubhojit-mitra-dev"
+    # - key: "Codeforces"
+    #   value: "https://codeforces.com/profile/shubhojit-mitra-dev"
