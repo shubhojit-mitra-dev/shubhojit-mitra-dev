@@ -166,7 +166,6 @@ def recursive_loc(owner, repo_name, data, cache_comment, addition_total=0, delet
                 print(f"Network error in recursive_loc: {e}. Retrying in 2 seconds...")
                 time.sleep(2)
             else:
-                force_close_file(data, cache_comment)
                 raise e
 
     if request is not None and request.status_code == 200:
@@ -176,7 +175,6 @@ def recursive_loc(owner, repo_name, data, cache_comment, addition_total=0, delet
         else:
             return 0, 0, 0
             
-    force_close_file(data, cache_comment)
     status_code = request.status_code if request is not None else 'Unknown'
     text = request.text if request is not None else 'No response'
     raise Exception(f"recursive_loc() failed with {status_code} {text}")
@@ -287,8 +285,15 @@ def cache_builder(edges, comment_size, force_cache, loc_add=0, loc_del=0):
                     current_count = ref['target']['history']['totalCount']
                     if int(commit_count) != current_count:
                         owner, repo_name = edges[index]['node']['nameWithOwner'].split('/')
-                        loc = recursive_loc(owner, repo_name, data, cache_comment)
-                        data[index] = f"{repo_hash} {current_count} {loc[2]} {loc[0]} {loc[1]}\n"
+                        try:
+                            loc = recursive_loc(owner, repo_name, data, cache_comment)
+                            data[index] = f"{repo_hash} {current_count} {loc[2]} {loc[0]} {loc[1]}\n"
+                        except Exception as repo_err:
+                            print(f"Warning: Failed to fetch LOC for {owner}/{repo_name}: {repo_err}. Skipping and keeping previous cache value.")
+                            if len(parts) >= 5:
+                                data[index] = f"{repo_hash} {current_count} {parts[2]} {parts[3]} {parts[4]}\n"
+                            else:
+                                data[index] = f"{repo_hash} {current_count} 0 0 0\n"
                 else:
                     data[index] = f"{repo_hash} 0 0 0 0\n"
             except TypeError:
