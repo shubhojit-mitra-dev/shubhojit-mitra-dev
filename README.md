@@ -1,9 +1,7 @@
 <div align="center">
   <a href="https://github.com/shubhojit-mitra-dev/shubhojit-mitra-dev">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="/shubhojit-mitra-dev/shubhojit-mitra-dev/raw/main/dark_mode.svg">
-      <img alt="Shubhojit Mitra's Profile Stats" src="/shubhojit-mitra-dev/shubhojit-mitra-dev/raw/main/light_mode.svg" width="985px">
-    </picture>
+    <img src="https://raw.githubusercontent.com/shubhojit-mitra-dev/shubhojit-mitra-dev/main/light_mode.svg#gh-light-mode-only" alt="Shubhojit Mitra's Profile Stats" width="985px">
+    <img src="https://raw.githubusercontent.com/shubhojit-mitra-dev/shubhojit-mitra-dev/main/dark_mode.svg#gh-dark-mode-only" alt="Shubhojit Mitra's Profile Stats" width="985px">
   </a>
 </div>
 
