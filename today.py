@@ -18,7 +18,7 @@ if ACCESS_TOKEN:
 else:
     HEADERS = {}
 
-QUERY_COUNT = {'user_getter': 0, 'follower_getter': 0, 'graph_repos_stars': 0, 'recursive_loc': 0, 'graph_commits': 0, 'loc_query': 0}
+QUERY_COUNT = {'user_getter': 0, 'prs_issues_getter': 0, 'graph_repos_stars': 0, 'recursive_loc': 0, 'graph_commits': 0, 'loc_query': 0}
 OWNER_ID = None
 
 def load_config():
@@ -363,20 +363,26 @@ def user_getter(username):
         return {'id': 'MOCK_ID'}, '2020-01-01T00:00:00Z'
     return {'id': request.json()['data']['user']['id']}, request.json()['data']['user']['createdAt']
 
-def follower_getter(username):
-    query_count('follower_getter')
+def prs_issues_getter(username):
+    query_count('prs_issues_getter')
     query = '''
-    query($login: String!){
-        user(login: $login) {
-            followers {
-                totalCount
-            }
-        }
+    query($prs_query: String!, $issues_query: String!) {
+      prs: search(query: $prs_query, type: ISSUE, first: 0) {
+        issueCount
+      }
+      issues: search(query: $issues_query, type: ISSUE, first: 0) {
+        issueCount
+      }
     }'''
-    request = simple_request(follower_getter.__name__, query, {'login': username})
+    variables = {
+        'prs_query': f'author:{username} type:pr',
+        'issues_query': f'author:{username} type:issue'
+    }
+    request = simple_request('prs_issues_getter', query, variables)
     if not request:
-        return 42
-    return int(request.json()['data']['user']['followers']['totalCount'])
+        return 50, 20
+    data = request.json()['data']
+    return int(data['prs']['issueCount']), int(data['issues']['issueCount'])
 
 def query_count(funct_id):
     global QUERY_COUNT
@@ -394,37 +400,37 @@ def justify_dots(root, element_id, dots_needed):
         val = " " + ("." * (dots_needed - 2)) + " "
     find_and_replace(root, element_id, val)
 
-def format_github_stats(svg, max_chars, repo, contrib, star, commit, follower, loc_add, loc_del, loc_net):
+def format_github_stats(svg, max_chars, repo, contrib, prs, commit, issues, loc_add, loc_del, loc_net):
     split_x = 34
     right_width = max_chars - split_x - 2
     
     repo_s = str(repo)
     contrib_s = str(contrib)
-    star_s = str(star)
+    prs_s = str(prs)
     commit_s = '{:,}'.format(commit) if isinstance(commit, int) else str(commit)
-    follower_s = str(follower)
+    issues_s = str(issues)
     loc_net_s = '{:,}'.format(loc_net) if isinstance(loc_net, int) else str(loc_net)
     loc_add_s = '{:,}'.format(loc_add) if isinstance(loc_add, int) else str(loc_add)
     loc_del_s = '{:,}'.format(loc_del) if isinstance(loc_del, int) else str(loc_del)
     
-    # Line 1: Repos and Stars
+    # Line 1: Repos and PRs
     dots_l1_left = split_x - 24 - len(repo_s) - len(contrib_s)
     justify_dots(svg, 'repo_data_dots', dots_l1_left)
     find_and_replace(svg, 'repo_data', repo_s)
     find_and_replace(svg, 'contrib_data', contrib_s)
     
-    dots_l1_right = right_width - 6 - len(star_s)
-    justify_dots(svg, 'star_data_dots', dots_l1_right)
-    find_and_replace(svg, 'star_data', star_s)
+    dots_l1_right = right_width - 4 - len(prs_s)
+    justify_dots(svg, 'prs_data_dots', dots_l1_right)
+    find_and_replace(svg, 'prs_data', prs_s)
     
-    # Line 2: Commits and Followers
+    # Line 2: Commits and Issues
     dots_l2_left = split_x - 10 - len(commit_s)
     justify_dots(svg, 'commit_data_dots', dots_l2_left)
     find_and_replace(svg, 'commit_data', commit_s)
     
-    dots_l2_right = right_width - 10 - len(follower_s)
-    justify_dots(svg, 'follower_data_dots', dots_l2_right)
-    find_and_replace(svg, 'follower_data', follower_s)
+    dots_l2_right = right_width - 7 - len(issues_s)
+    justify_dots(svg, 'issues_data_dots', dots_l2_right)
+    find_and_replace(svg, 'issues_data', issues_s)
     
     # Line 3: Lines of Code
     dots_l3_left = split_x - 26 - len(loc_net_s)
@@ -672,14 +678,14 @@ def build_svg_base(config, theme_type, ascii_lines):
     etree.SubElement(tspan_l1, 'tspan', attrib={"class": "value"}, id="contrib_data")
     etree.SubElement(tspan_l1, 'tspan').text = "} | "
     
-    etree.SubElement(tspan_l1, 'tspan', attrib={"class": "key"}).text = "Stars"
+    etree.SubElement(tspan_l1, 'tspan', attrib={"class": "key"}).text = "PRs"
     etree.SubElement(tspan_l1, 'tspan').text = ":"
-    etree.SubElement(tspan_l1, 'tspan', attrib={"class": "cc"}, id="star_data_dots")
-    etree.SubElement(tspan_l1, 'tspan', attrib={"class": "value"}, id="star_data")
+    etree.SubElement(tspan_l1, 'tspan', attrib={"class": "cc"}, id="prs_data_dots")
+    etree.SubElement(tspan_l1, 'tspan', attrib={"class": "value"}, id="prs_data")
     
     y_idx += y_step
     
-    # Line 2: Commits and Followers
+    # Line 2: Commits and Issues
     tspan_l2 = etree.SubElement(right_text, 'tspan', x=right_align_x, y=str(y_idx))
     etree.SubElement(tspan_l2, 'tspan', attrib={"class": "cc"}).text = ". "
     etree.SubElement(tspan_l2, 'tspan', attrib={"class": "key"}).text = "Commits"
@@ -689,11 +695,11 @@ def build_svg_base(config, theme_type, ascii_lines):
     
     etree.SubElement(tspan_l2, 'tspan').text = " | "
     
-    # Followers
-    etree.SubElement(tspan_l2, 'tspan', attrib={"class": "key"}).text = "Followers"
+    # Issues
+    etree.SubElement(tspan_l2, 'tspan', attrib={"class": "key"}).text = "Issues"
     etree.SubElement(tspan_l2, 'tspan').text = ":"
-    etree.SubElement(tspan_l2, 'tspan', attrib={"class": "cc"}, id="follower_data_dots")
-    etree.SubElement(tspan_l2, 'tspan', attrib={"class": "value"}, id="follower_data")
+    etree.SubElement(tspan_l2, 'tspan', attrib={"class": "cc"}, id="issues_data_dots")
+    etree.SubElement(tspan_l2, 'tspan', attrib={"class": "value"}, id="issues_data")
     
     y_idx += y_step
     
@@ -783,16 +789,15 @@ if __name__ == '__main__':
     t_start = time.perf_counter()
     OWNER_ID, acc_date = user_getter(USER_NAME)
     
-    # Get followers
-    follower_data = follower_getter(USER_NAME)
+    # Get Pull Requests and Issues
+    prs_data, issues_data = prs_issues_getter(USER_NAME)
     
     # Uptime calculation
     age_data = daily_readme(birthday)
     
-    # Repos and Stars
+    # Repos
     repo_data = graph_repos_stars('repos', ['OWNER'])
     contrib_data = graph_repos_stars('repos', ['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'])
-    star_data = graph_repos_stars('stars', ['OWNER'])
     
     # Commits
     commit_data = get_all_commits()
@@ -829,7 +834,7 @@ if __name__ == '__main__':
     # Generate Dark Mode SVG
     svg_dark = build_svg_base(config, 'dark', ascii_lines)
     justify_format(svg_dark, 'age_data', age_data, age_justify)
-    format_github_stats(svg_dark, max_chars, repo_data, contrib_data, star_data, commit_data, follower_data, total_loc[0], total_loc[1], total_loc[2])
+    format_github_stats(svg_dark, max_chars, repo_data, contrib_data, prs_data, commit_data, issues_data, total_loc[0], total_loc[1], total_loc[2])
     
     with open('dark_mode.svg', 'wb') as f:
         f.write(etree.tostring(svg_dark, pretty_print=False, xml_declaration=True, encoding='utf-8'))
@@ -837,7 +842,7 @@ if __name__ == '__main__':
     # Generate Light Mode SVG
     svg_light = build_svg_base(config, 'light', ascii_lines)
     justify_format(svg_light, 'age_data', age_data, age_justify)
-    format_github_stats(svg_light, max_chars, repo_data, contrib_data, star_data, commit_data, follower_data, total_loc[0], total_loc[1], total_loc[2])
+    format_github_stats(svg_light, max_chars, repo_data, contrib_data, prs_data, commit_data, issues_data, total_loc[0], total_loc[1], total_loc[2])
     
     with open('light_mode.svg', 'wb') as f:
         f.write(etree.tostring(svg_light, pretty_print=False, xml_declaration=True, encoding='utf-8'))
